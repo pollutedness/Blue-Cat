@@ -212,11 +212,12 @@ while 1:
                         executor.submit(send_sms.Yapp),
                         executor.submit(send_sms.YilmazTicaret),
                         executor.submit(send_sms.Yuffi)
-                        #23.01.2025 gelecekler
                         executor.submit(send_sms.Papara)
                         executor.submit(send_sms.İninal)
                         executor.submit(send_sms.ParolaPara)
                         executor.submit(send_sms.Keyubu)
+                        #eklenecekler
+                        #steam , telegram, yemeksepeti
                     ]
                     wait(futures)
         except KeyboardInterrupt:
