@@ -19,4 +19,3 @@ python3 enough.py
 Discord: ayhancan
 Telegram: all4hcan
 
-Bu Enough-Rebornun geliştirilmiş halidir!
