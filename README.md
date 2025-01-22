@@ -19,3 +19,5 @@ python3 main.py
 Discord: ayhancan
 Telegram: all4hcan
 
+<h2>Creditler</h2>
+[Tingirifi](https://github.com/tingirifistik) Enough-Reborn'un geliştirilmiş halidir
