@@ -211,11 +211,11 @@ while 1:
                         executor.submit(send_sms.Wmf),
                         executor.submit(send_sms.Yapp),
                         executor.submit(send_sms.YilmazTicaret),
-                        executor.submit(send_sms.Yuffi)
-                        executor.submit(send_sms.Papara)
-                        executor.submit(send_sms.İninal)
-                        executor.submit(send_sms.ParolaPara)
-                        executor.submit(send_sms.Keyubu)
+                        executor.submit(send_sms.Yuffi),
+                        executor.submit(send_sms.Papara),
+                        executor.submit(send_sms.İninal),
+                        executor.submit(send_sms.ParolaPara),
+                        executor.submit(send_sms.Keyubu),
                         #eklenecekler
                         #steam , telegram, yemeksepeti
                     ]
