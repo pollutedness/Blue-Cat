@@ -23,8 +23,8 @@ while 1:
             `-.-' \ )-`( , o o)
                 `-    \`_`"'-
 
-    Ayhancan tarafından yapılmıştır!
-    discord: ayhancan / telegram: all4hcan
+    9k tarafından yapılmıştır!
+    discord: 9kqy / telegram: pollutedness
                                  
       {Fore.LIGHTBLUE_EX}{Fore.LIGHTBLUE_EX}      
 
