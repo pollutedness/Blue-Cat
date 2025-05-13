@@ -15,8 +15,8 @@ python3 main.py
 ```
 
 <h2>İletişim</h2>
-Discord: ayhancan
-Telegram: all4hcan
+Discord: diedinturkey
+Telegram: pollutedness
 
 <h2>Creditler</h2>
 [Tingirifi](https://github.com/tingirifistik) Enough-Reborn'un geliştirilmiş halidir
